@@ -4,13 +4,15 @@ from parse_app.models import Parts
 from BeautifulSoup import BeautifulSoup
 import time
 from selenium import webdriver
+from parse_table import settings
+import os
 
 
 class Command(BaseCommand):
     help = 'Parse and save data from table in "http://avtoparts.com.ua/Search/ComponentsByCategory?category=39"'
 
     def handle(self, *args, **options):
-        driver = webdriver.PhantomJS(executable_path=r'/home/ivan/parsetable_env/parse_table/phantomjs')
+        driver = webdriver.PhantomJS(executable_path=os.path.join(settings.BASE_DIR,'phantomjs'))
         driver.set_window_size(1120, 550)
         driver.get('http://avtoparts.com.ua/Search/ComponentsByCategory?category=39')
 
