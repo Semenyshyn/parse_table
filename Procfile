@@ -1,0 +1,1 @@
+web: gunicorn parse_table.wsgi --log-file -
